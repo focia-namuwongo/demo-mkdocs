@@ -24,7 +24,7 @@ ifeq ($(platform), "unix")
 endif 
 
 open-local: 
-	open http://localhost:8000
+	open http://localhost:5000
 
 stop: 
 	docker-compose down --remove-orphans
