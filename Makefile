@@ -29,26 +29,14 @@ open-local:
 stop: 
 	docker-compose down --remove-orphans
 
-serve: check-file
-	source $(file) && \
+serve: 
 	docker-compose run --service-ports local_development_server
 
 #see article on passing arguments to overridden entrypoint:
 #https://oprearocks.medium.com/how-to-properly-override-the-entrypoint-using-docker-run-2e081e5feb9d
-build: check-file
+build: 
 	docker-compose build local_development_server
-	source $(file) && \
 	docker-compose run 	--entrypoint "mkdocs" local_development_server build
-
-
-##########################################################################################
-# run prep-env-file directive from inside container (make docker, >>make prep-env-file)
-##########################################################################################
-prep-env-file: check-env check-region check-file
-	buildenv -e $(env) -d $(region) > $(file)
-	eval "$$(buildenv -e $(env) -d $(region))" && \
-	export CONTACT_API_URL=`aws ssm get-parameters --name "$$CONTACT_API_SSM_PATH" | jq -r .Parameters[0].Value` && \
-	echo "export CONTACT_API_URL=\"$$CONTACT_API_URL\"" >> $(file)
 
 ##########################################################################################
 
@@ -67,9 +55,4 @@ endif
 check-platform:
 ifndef platform
 	$(error platform is not defined)
-endif
-
-check-file:
-ifndef file
-	$(error file is not defined)
 endif

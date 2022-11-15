@@ -27,7 +27,7 @@ theme:
     - navigation.sections
     - toc.integrate
   palette:
-    primary: orange
+    primary: light-green
     accent: amber
 
 plugins:
