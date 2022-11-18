@@ -13,7 +13,7 @@ this is _italics_
 
 ## deployment info
 for `{{ ENV_LEVEL }}` this project will deploy to the s3 bucket `{{ WEBSITE_S3_ID }}`  
- 
-[click here for {{ ENV_LEVEL }} deployment]({{ WEBSITE_URL }}){target="_blank"}  
+
+[click here for **{{ ENV_LEVEL }}** deployment]({{ WEBSITE_URL }}){target="_blank"}  
 
 ### and another one
