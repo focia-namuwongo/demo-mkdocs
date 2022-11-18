@@ -34,3 +34,8 @@ plugins:
   - search
   - markdown-filter
   - macros
+
+extra:
+  WEBSITE_S3_ID: !ENV [WEBSITE_S3_ID]
+  WEBSITE_URL: !ENV [WEBSITE_URL]
+  ENV_LEVEL: !ENV [TF_VAR_env]
