@@ -11,6 +11,8 @@ environments:
         vars:
           AWS_REGION: "us-east-1"
           TF_VAR_region: "us-east-1"   
+          WEBSITE_S3_ID: "/s3/demo-mkdocs/dev/us-east-1/id"
+          WEBSITE_ENDPOINT_SSM_PATH: "/s3/demo-mkdocs/dev/us-east-1/url"
   prod:
     vars:
       TF_VAR_env: "prod"
@@ -20,3 +22,5 @@ environments:
         vars:
           AWS_REGION: "us-east-1"
           TF_VAR_region: "us-east-1"
+          WEBSITE_S3_ID: "/s3/demo-mkdocs/prod/us-east-1/id"
+          WEBSITE_ENDPOINT_SSM_PATH: "/s3/demo-mkdocs/prod/us-east-1/url"
