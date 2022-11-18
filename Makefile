@@ -1,5 +1,7 @@
 SHELL:=/bin/bash
 
+region=us-east-1
+
 # ##########################################################################################
 # # run docker/serve/build commands from local machine
 # ##########################################################################################
@@ -12,14 +14,14 @@ open-local:
 stop: 
 	docker compose down --remove-orphans
 
-serve: 
-	docker compose run --service-ports local_development_server
+serve: check-env check-region
+	docker compose run --entrypoint "/bin/bash" --service-ports local_development_server -c "source ./scripts/serve.sh $(env) $(region)"
+				
+build: check-env check-region
+	docker compose run --entrypoint "/bin/bash" ubuntu -c "source ./scripts/build.sh $(env) $(region)"
 
-#see article on passing arguments to overridden entrypoint:
-#https://oprearocks.medium.com/how-to-properly-override-the-entrypoint-using-docker-run-2e081e5feb9d
-build: 
-	docker compose build local_development_server
-	docker compose run 	--entrypoint "mkdocs" local_development_server build
+deploy: check-env check-region
+	docker compose run --entrypoint "/bin/bash" ubuntu -c "source ./scripts/deploy.sh $(env) $(region)"
 
 ##########################################################################################
 
