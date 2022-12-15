@@ -1,0 +1,37 @@
+name: Build Mkdocs Site
+# inputs:
+#   who-to-greet:  # id of input
+#     description: 'Who to greet'
+#     required: true
+#     default: 'World'
+# outputs:
+#   time: # id of output
+#     description: 'The time we greeted you'
+# runs:
+#   using: 'docker'
+#   image: 'Dockerfile'
+#   args:
+#     - ${{ inputs.who-to-greet }}
+
+    
+# trigger on all push events to main branch
+# on: 
+#   push:
+#     branches:
+#       - main
+on: [push]
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Install Prerequisites 
+        run: source ./scripts/install.sh 
+
+
+        # uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #   CONFIG_FILE: mkdocs.yaml
+
