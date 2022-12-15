@@ -11,9 +11,12 @@ wget -O /tmp/buildenv.tar.gz https://github.com/Comcast/Buildenv-Tool/releases/d
 cd /tmp && \
 tar xzvf /tmp/buildenv.tar.gz 
 
+pwd
 ls -ltra /tmp
 mkdir -p /usr/local/bin/
 ls -ltra /usr/local/bin
+pwd
+
 mv /tmp/buildenv /usr/local/bin/buildenv && \ 
 chown root:root /usr/local/bin/buildenv && \ 
 chmod 755 /usr/local/bin/buildenv && \
