@@ -21,17 +21,11 @@ name: Build Mkdocs Site
 #       - main
 on: [push]
 jobs:
-  docs:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v2
+      - uses: ntno/setup-buildenv@v1
       - name: Install Prerequisites 
         run: source ./scripts/install.sh 
-
-
-        # uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #   CONFIG_FILE: mkdocs.yaml
-
